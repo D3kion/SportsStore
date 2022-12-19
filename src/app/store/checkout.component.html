@@ -1,0 +1,107 @@
+<div class="navbar navbar-dark bg-dark text-white">
+  <div class="container-fluid">
+    <a href="/" class="navbar-brand">SPORTS STORE</a>
+  </div>
+</div>
+<div *ngIf="orderSent" class="m-2 text-center">
+  <h2>Thanks!</h2>
+  <p>Thanks for placing your order.</p>
+  <p>We'll ship your goods as soon as possible.</p>
+  <button class="btn btn-primary" routerLink="/store">Return to Store</button>
+</div>
+<form
+  *ngIf="!orderSent"
+  #form="ngForm"
+  class="m-2"
+  novalidate
+  (ngSubmit)="submitOrder(form)"
+>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      class="form-control"
+      #name="ngModel"
+      id="name"
+      name="name"
+      [(ngModel)]="order.name"
+      required
+    />
+    <span *ngIf="submitted && name.invalid" class="text-danger">
+      Please enter your name
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input
+      class="form-control"
+      #address="ngModel"
+      id="address"
+      name="address"
+      [(ngModel)]="order.address"
+      required
+    />
+    <span *ngIf="submitted && address.invalid" class="text-danger">
+      Please enter your address
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="city">City</label>
+    <input
+      class="form-control"
+      #city="ngModel"
+      id="city"
+      name="city"
+      [(ngModel)]="order.city"
+      required
+    />
+    <span *ngIf="submitted && city.invalid" class="text-danger">
+      Please enter your city
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="state">State</label>
+    <input
+      class="form-control"
+      #state="ngModel"
+      id="state"
+      name="state"
+      [(ngModel)]="order.state"
+      required
+    />
+    <span *ngIf="submitted && state.invalid" class="text-danger">
+      Please enter your state
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="zip">Zip/Postal Code</label>
+    <input
+      class="form-control"
+      #zip="ngModel"
+      id="zip"
+      name="zip"
+      [(ngModel)]="order.zip"
+      required
+    />
+    <span *ngIf="submitted && zip.invalid" class="text-danger">
+      Please enter your zip/postal code
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="country">Country</label>
+    <input
+      class="form-control"
+      #country="ngModel"
+      id="country"
+      name="country"
+      [(ngModel)]="order.country"
+      required
+    />
+    <span *ngIf="submitted && country.invalid" class="text-danger">
+      Please enter your country
+    </span>
+  </div>
+  <div class="text-center">
+    <button class="btn btn-secondary m-1" routerLink="/cart">Back</button>
+    <button class="btn btn-primary m-1" type="submit">Complete Order</button>
+  </div>
+</form>
