@@ -1,0 +1,57 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col bg-dark text-white">
+      <a href="/" class="navbar-brand">SPORTS STORE</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3 p-2 d-flex flex-column gap-1">
+      <button class="btn btn-outline-primary" (click)="changeCategory()">
+        Home
+      </button>
+      <button
+        *ngFor="let cat of categories"
+        class="btn btn-outline-primary"
+        [class.active]="cat === selectedCategory"
+        (click)="changeCategory(cat)"
+      >
+        {{ cat }}
+      </button>
+    </div>
+    <div class="col-9 p-2">
+      <div *ngFor="let p of products" class="card m-1 p-1 bg-light">
+        <h4>
+          {{ p.name }}
+          <span class="badge rounded-pill text-bg-primary float-end">
+            {{ p.price | currency : "USD" : "symbol" : "2.2-2" }}
+          </span>
+        </h4>
+        <div class="card-text p-1 bg-white">
+          {{ p.description }}
+        </div>
+      </div>
+      <div class="float-start mr-1">
+        <select
+          class="form-select"
+          [value]="productsPerPage"
+          (change)="changePageSize($event.target.value)"
+        >
+          <option value="3">3 per Page</option>
+          <option value="4">4 per Page</option>
+          <option value="6">6 per Page</option>
+          <option value="8">8 per Page</option>
+        </select>
+      </div>
+      <div class="btn-group float-end">
+        <button
+          *counter="let page of pageCount"
+          class="btn btn-outline-primary"
+          [class.active]="page === selectedPage"
+          (click)="changePage(page)"
+        >
+          {{ page }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
