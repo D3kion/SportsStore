@@ -70,9 +70,9 @@
       <button
         class="btn btn-secondary m-1"
         routerLink="/checkout"
-        [disabled]="cart.lines.length === 0"
+        [disabled]="!cart.lines.length || !connected"
       >
-        Checkout
+        {{ connected ? "Checkout" : "Offline" }}
       </button>
     </div>
   </div>

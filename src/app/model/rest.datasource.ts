@@ -6,8 +6,8 @@ import { map } from 'rxjs/operators';
 import { Product } from './product.model';
 import { Order } from './order.model';
 
-const PROTOCOL = 'http';
-const PORT = 3500;
+// const PROTOCOL = 'http';
+// const PORT = 3500;
 
 @Injectable()
 export class RestDataSource {
@@ -15,7 +15,8 @@ export class RestDataSource {
   authToken: string | null = null;
 
   constructor(private http: HttpClient) {
-    this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
+    // this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
+    this.baseUrl = '/api/';
   }
 
   getProducts(): Observable<Product[]> {

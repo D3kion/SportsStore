@@ -1,6 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Route } from '@angular/router';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { AppComponent } from './app.component';
 import { StoreFirstGuard } from './storeFirst.guard';
@@ -35,7 +36,17 @@ const routes: Route[] = [
 ];
 
 @NgModule({
-  imports: [BrowserModule, StoreModule, RouterModule.forRoot(routes)],
+  imports: [
+    BrowserModule,
+    StoreModule,
+    RouterModule.forRoot(routes),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000',
+    }),
+  ],
   providers: [StoreFirstGuard],
   declarations: [AppComponent],
   bootstrap: [AppComponent],

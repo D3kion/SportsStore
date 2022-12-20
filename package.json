@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "json": "json-server json-server/data.js -p 3500 -m json-server/authMiddleware.js"
+    "json": "json-server server/data.js -p 3500 -m server/authMiddleware.js"
   },
   "private": true,
   "dependencies": {
@@ -19,8 +19,12 @@
     "@angular/platform-browser": "^15.0.0",
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
+    "@angular/service-worker": "^15.0.0",
     "@fortawesome/fontawesome-free": "^6.2.1",
     "bootstrap": "^5.2.3",
+    "connect-history-api-fallback": "^2.0.0",
+    "express": "^4.18.2",
+    "https": "^1.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
